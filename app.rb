@@ -6,13 +6,17 @@ require "httparty"
 def view(template); erb template.to_sym; end
 before { puts "Parameters: #{params}" }                                     
 
-# enter your Dark Sky API key here
-ForecastIO.api_key = "YOUR-API-KEY"
+ForecastIO.api_key = "f1cfe18c86ee64a2b13c6ce023ec052f"
 
 get "/" do
-  # show a view that asks for the location
+    view "ask"
 end
 
 get "/news" do
-  # do everything else
+    results = Geocoder.search(params["q"])
+    lat_long = results.first.coordinates
+    "#{lat_long[0]} #{lat_long[1]}"
+
+    url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=9b0b7dddd56b413ca0cb58b252b3ce41"
+    news = HTTParty.get(url).parsed_response.to_hash
 end

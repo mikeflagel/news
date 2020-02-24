@@ -18,14 +18,18 @@
     <!-- Your own CSS -->
     <link rel="stylesheet" href="/styles.css">
 
-   <title>News</title>
+   <title>Your News & Weather Report</title>
   </head>
   <body>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Your Weather and News Report</h1>
-    <p class="lead">It is currently <%= @current_temperature %> degrees and <%= @current_conditions %> in <%= @location %>.</p>
-  </div>
+    <h1 class="display-4">Your News & Weather Report</h1>
+    <p class="lead"> In <%= @location %>, it is currently <%= @current_temperature %> degrees fahrenheit and <%= @current_conditions %> </p>
+    <p><a href="/" class="btn btn-primary btn-lg">Go Back & Search Another Location</a></p>  
+    </div>
+</div>
+<div class="container mt-5">
+<h3>Your 5 Day Forecast</h3>
 </div>
 <p>
 <div class="container mt-5">
@@ -33,9 +37,9 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Day</th>
-      <th scope="col">Temperature</th>
-      <th scope="col">Wind</th>
-      <th scope="col">Conditions</th>
+      <th scope="col">Temperature (fahrenheit)</th>
+      <th scope="col">Wind Speed (MPH)</th>
+      <th scope="col">Weather Conditions</th>
     </tr>
   </thead>
   <tbody>
@@ -46,25 +50,25 @@
       <td><%=@daily_conditions[0]%></td>
     </tr>
     <tr>
-      <th scope="row">In Two Days</th>
+      <th scope="row">In 2 Days</th>
       <td><%=@daily_temperature[1]%> degrees</td>
       <td><%=@daily_wind[1]%>mph</td>
       <td><%=@daily_conditions[1]%></td>
     </tr>
     <tr>
-      <th scope="row">In Three Days</th>
+      <th scope="row">In 3 Days</th>
       <td><%=@daily_temperature[2]%> degrees</td>
       <td><%=@daily_wind[2]%>mph</td>
       <td><%=@daily_conditions[2]%></td>
     </tr>
     <tr>
-      <th scope="row">In Four Days</th>
+      <th scope="row">In 4 Days</th>
       <td><%=@daily_temperature[3]%> degrees</td>
       <td><%=@daily_wind[3]%>mph</td>
       <td><%=@daily_conditions[3]%></td>
     </tr>
     <tr>
-      <th scope="row">In Five Days</th>
+      <th scope="row">In 5 Days</th>
       <td><%=@daily_temperature[4]%> degrees</td>
       <td><%=@daily_wind[4]%>mph</td>
       <td><%=@daily_conditions[4]%></td>
@@ -73,6 +77,9 @@
 </table>
 </div>
 </p>
+<div class="container mt-5">
+<h3>News Feed</h3>
+</div>
 <div class="container mt-5">
     <% for article in @news["articles"] %>
     <p><a href= "<%= article["url"] %>"> <%= article["title"] %></a></p>

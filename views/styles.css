@@ -1,3 +1,20 @@
-.display-4 {
-    color: blue
+h1 {
+    color: blue;
+}
+
+.display-4{
+
+    color: blue;
+}
+
+.jumbotronjumbotron-fluid{
+    background-color: salmon;
+}
+
+.containermt-5{
+    color: red;
+}
+
+h3{
+    color: red;
 }
